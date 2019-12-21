@@ -12,17 +12,29 @@
 }
 
 .Cart .list-group {
-    display: block;
     width: 100%;
 }
 
 .Cart .list-group .list-group-item {
+    display: flex;
     border-radius: 0 !important;
 }
+
+.Cart .list-group .list-group-item h5,
+.Cart .list-group .list-group-item p {
+    padding: 0 3px;
+    margin: 0;
+}
+
 .Cart .list-group .list-group-item.active {
     padding: 0.9rem;
 }
 
+.Total {
+    bottom: 15px;
+    position: absolute;
+    color:#e74c3c;
+}
 
 .btnClose {
     position: absolute;
@@ -32,4 +44,9 @@
     top: 5px;
     right: 15px;
     cursor: pointer;
+}
+
+.cartItems {
+    overflow-y: auto;
+    height: 80vh;
 }
