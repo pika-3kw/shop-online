@@ -33,9 +33,11 @@ function App(props) {
   useEffect(() => {
     if (popup === 'mini-cart') {
       serPopupVisible(<Cart />)
+      document.body.style.overflow = 'hidden';
     }
     else {
       serPopupVisible(null)
+      document.body.style.overflow = 'visible';
     }
 
   }, [popup])
