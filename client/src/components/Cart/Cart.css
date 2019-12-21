@@ -1,0 +1,17 @@
+.Cart{
+    max-width: 450px;
+    border: 1px solid #0275d8;
+    display: block;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin-left: auto;
+}
+
+.Cart .list-group {
+    display: block;
+}
+
+.Cart .list-group .list-group-item {
+    border-radius: 0 !important;
+}
