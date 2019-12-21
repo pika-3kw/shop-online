@@ -1,14 +1,28 @@
 import React, { useEffect, useState } from 'react';
-import './App.css';
+import {
+  BrowserRouter,
+  Switch,
+  Route
+} from "react-router-dom";
+
 import { useSelector } from 'react-redux';
-import Product from './components/Product';
+
+import { Container } from 'react-bootstrap';
+
 import NavbarCustom from './components/NavbarCustom';
+import Home from './components/Home';
+import Category from './components/Category';
+
+import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
-import { faShoppingBag } from '@fortawesome/free-solid-svg-icons'
+import { faShoppingBag, faTimes } from '@fortawesome/free-solid-svg-icons'
+
 import Cart from './components/Cart';
-library.add(fab, faShoppingBag)
+library.add(fab, faShoppingBag);
+library.add(fab, faTimes);
+
 
 function App(props) {
 
@@ -27,11 +41,24 @@ function App(props) {
   }, [popup])
 
   return (
-    <div className="App">
-      <NavbarCustom />
-      {popupVisible}
+    <BrowserRouter>
+      <div className="App">
+        <NavbarCustom />
+        {popupVisible}
 
-    </div>
+        <Container>
+          <Switch>
+            <Route path="/category">
+              <Category />
+            </Route>
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
+        </Container>
+
+      </div>
+    </BrowserRouter>
   );
 }
 
