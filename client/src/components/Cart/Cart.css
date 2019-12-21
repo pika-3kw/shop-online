@@ -1,5 +1,5 @@
 .Cart{
-    width: 450px;
+    min-width: 320px;
     border: 1px solid #0275d8;
     border-right: 0;
     position: fixed;

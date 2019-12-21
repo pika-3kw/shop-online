@@ -1,13 +1,32 @@
 import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Card, Button, Col } from 'react-bootstrap'
 import './Product.css';
 
 const Product = props => {
 
+    const { item } = props;
+    const { name, price, image, currency } = props.item;
+
     const [isFavorite, setIsFavorite] = useState(false);
+    const [quantity, setQuantity] = useState(0);
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        if (quantity) {
+            dispatch({
+                type: "ADD_TO_CART", item: {
+                    ...item,
+                    quantity
+                }
+            })
+        }
+    }, [quantity])
 
 
     const buttonAddHandle = () => {
+        setQuantity(quantity + 1);
 
     }
 
@@ -25,8 +44,6 @@ const Product = props => {
 
         }
     }, [isFavorite])
-
-    const { name, price, quantity, image, currency } = props.item
 
     return (
         <Col xs={12} sm={6} lg={4} xl={3} align={'center'} style={{ margin: "30px auto" }}>

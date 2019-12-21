@@ -11,20 +11,34 @@
 
 const initState = {
     cartId: '',
-    transactions: [{
-        items_list: {
-            items: []
-        },
-        amount: {
-            currency: 'USD',
-            total: 0
-        }
-    }]
+    item_list: {
+        items: []
+    },
+    amount: {
+        currency: 'USD',
+        total: 0
+    }
 }
 
 const cart = (state = initState, action) => {
     switch (action.type) {
-        case 'INIT_CART': return state
+        case 'ADD_TO_CART': {
+
+            const { item } = action;
+            const found = state.item_list.items.find(elem => elem.name === item.name);
+
+            if (!found) {
+                state.item_list.items.push(item)
+            } else {
+                found.quantity++;
+            }
+
+            console.log(item)
+            state.amount.total += item.price
+
+
+            return state;
+        }
         default: return state
     }
 }
@@ -32,13 +46,11 @@ const cart = (state = initState, action) => {
 
 
 
-export function initCart() {
+export function addToCart(item) {
+    console.log("a")
     return {
-        type: 'INIT_CART',
-        initState: {
-            ex: 5,
-            ss: 9
-        }
+        type: 'ADD_TO_CART',
+        item
     }
 }
 
