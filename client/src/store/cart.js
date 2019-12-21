@@ -33,7 +33,6 @@ const cart = (state = initState, action) => {
                 found.quantity++;
             }
 
-            console.log(item)
             state.amount.total += item.price
 
 
@@ -47,7 +46,6 @@ const cart = (state = initState, action) => {
 
 
 export function addToCart(item) {
-    console.log("a")
     return {
         type: 'ADD_TO_CART',
         item

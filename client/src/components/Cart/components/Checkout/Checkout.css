@@ -1,0 +1,7 @@
+.Checkout{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 11vh;
+    border-top: 1px solid #7f8c8d;
+}
