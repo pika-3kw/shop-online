@@ -1,20 +1,21 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Button } from "react-bootstrap";
-import "./Checkout.css";
+import "./CheckoutAction.css";
+import axios from "axios";
 
-const Checkout = props => {
+const CheckoutAction = props => {
 
     const cart = useSelector(state => state.cart);
 
     const { total, currency } = props;
     let create_payment_json;
 
-
     const checkoutEvent = () => {
         if (cart.length === 0) return;
-        let create_payment_json = {
-            intent: "sale",
+
+        create_payment_json = {
+            intent: "order",
             payer: {
                 payment_method: "paypal"
             },
@@ -22,12 +23,22 @@ const Checkout = props => {
                 return_url: "http://return.url",
                 cancel_url: "http://cancel.url"
             },
-            transactions: [cart]
+            transactions: [{
+                ...cart,
+                description: "This is the payment description."
+            }],
+
         };
+
+        delete create_payment_json.transactions[0].cartId;
+
+        axios.post('/api/payment', create_payment_json)
+            .then(res => console.log(res))
+            .catch(err => console.error(err))
     }
 
     return (
-        <div className='Checkout'>
+        <div className='CheckoutAction'>
             <div className="">
                 Cart total: {total} {currency}
             </div>
@@ -35,4 +46,4 @@ const Checkout = props => {
         </div>)
 }
 
-export default Checkout;
+export default CheckoutAction;
