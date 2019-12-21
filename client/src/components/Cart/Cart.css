@@ -30,12 +30,6 @@
     padding: 0.9rem;
 }
 
-.Total {
-    bottom: 15px;
-    position: absolute;
-    color:#e74c3c;
-}
-
 .btnClose {
     position: absolute;
     z-index: 3;
@@ -44,9 +38,4 @@
     top: 5px;
     right: 15px;
     cursor: pointer;
-}
-
-.cartItems {
-    overflow-y: auto;
-    height: 80vh;
 }

@@ -1,0 +1,10 @@
+.CartItems {
+    overflow-y: auto;
+    height: 80vh;
+}
+
+.Total {
+    bottom: 15px;
+    position: absolute;
+    color:#e74c3c;
+}
