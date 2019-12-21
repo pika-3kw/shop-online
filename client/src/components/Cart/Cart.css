@@ -1,17 +1,35 @@
 .Cart{
-    max-width: 450px;
+    width: 450px;
     border: 1px solid #0275d8;
-    display: block;
-    right: 0;
+    border-right: 0;
+    position: fixed;
     top: 0;
     bottom: 0;
+    right: 0;
+    z-index: 10;
+    background-color: white;
     margin-left: auto;
 }
 
 .Cart .list-group {
     display: block;
+    width: 100%;
 }
 
 .Cart .list-group .list-group-item {
     border-radius: 0 !important;
+}
+.Cart .list-group .list-group-item.active {
+    padding: 0.9rem;
+}
+
+
+.btnClose {
+    position: absolute;
+    z-index: 3;
+    font-size: 30px;
+    color: white;
+    top: 5px;
+    right: 15px;
+    cursor: pointer;
 }

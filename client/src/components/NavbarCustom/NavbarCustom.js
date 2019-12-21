@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import { Navbar, Nav } from "react-bootstrap";
 import './NavbarCustom.css'
 import MiniCart from "../../components/MiniCart/MiniCart";
@@ -9,9 +10,8 @@ const NavbarCustom = props => {
             <Navbar bg="primary" expand="sm" variant="dark">
                 <Navbar.Brand href="#home">Navbar</Navbar.Brand>
                 <Nav className="mr-auto">
-                    <Nav.Link href="#home">Home</Nav.Link>
-                    <Nav.Link href="#features">Features</Nav.Link>
-                    <Nav.Link href="#pricing">Pricing</Nav.Link>
+                    <Link className="nav-link" to="/">Home</Link>
+                    <Link className="nav-link" to="/category">Category</Link>
                 </Nav>
                 <div>
                     <MiniCart />

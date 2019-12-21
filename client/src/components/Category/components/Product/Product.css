@@ -1,8 +1,11 @@
 .Product {
     display: inline-block;
+    margin: auto;
+    width: 90%;
 }
 
 .actions {
     display: flex;
     justify-content: space-between;
 }
+
