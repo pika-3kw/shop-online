@@ -8,41 +8,14 @@ const CheckoutAction = props => {
 
     const cart = useSelector(state => state.cart);
 
-    const { total, currency } = props;
-    let create_payment_json;
-
-    const checkoutEvent = () => {
-        if (cart.length === 0) return;
-
-        create_payment_json = {
-            intent: "order",
-            payer: {
-                payment_method: "paypal"
-            },
-            redirect_urls: {
-                return_url: "http://return.url",
-                cancel_url: "http://cancel.url"
-            },
-            transactions: [{
-                ...cart,
-                description: "This is the payment description."
-            }],
-
-        };
-
-        delete create_payment_json.transactions[0].cartId;
-
-        axios.post('/api/payment', create_payment_json)
-            .then(res => console.log(res))
-            .catch(err => console.error(err))
-    }
+    const { total, currency, setStep } = props;
 
     return (
         <div className='CheckoutAction'>
             <div className="">
                 Cart total: {total} {currency}
             </div>
-            <Button onClick={checkoutEvent} variant="success">Checkout</Button>
+            <Button disabled={cart.item_list.items.length === 0} onClick={() => setStep("payment_method")} variant="success">Checkout</Button>
         </div>)
 }
 
